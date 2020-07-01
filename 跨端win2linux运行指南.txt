@@ -1,0 +1,33 @@
+
+
+如何跨windows/linux(centos) 执行auto_play工具
+
+1.首先在windows打开git bash
+
+2.输入ssh-keygen -t rsa
+	弹出问询输入yes
+	然后一路回车
+	生成id_rsa id_rsa.pub
+
+3.ssh-copy-id perfer@10.29.70.72   copy公钥到目标linux机器
+	输入10.29.70.72的密码,完成copy
+
+4.运行示例 python auto_play.py -c auto_play.yml -u perfer cmd "ls -al" target web2 --pkey C:\Users\Sean.Yu\.ssh\id_rsa
+
+	web2 10.29.70.72 22
+
+----web2
+    ----result:
+        total 23
+        drwx------  5 perfer perfer 1024 Jan  8 09:16 .
+        drwxr-xr-x 17 root   root   1024 Dec 20 11:04 ..
+        -rw-------  1 perfer perfer 8357 Jan  8 09:12 .bash_history
+        -rw-r--r--  1 perfer perfer   18 Jun 14  2019 .bash_logout
+        -rw-r--r--  1 perfer perfer  193 Jun 14  2019 .bash_profile
+        -rw-r--r--  1 perfer perfer  262 Nov 19  2018 .bashrc
+        drwx------  4 perfer perfer 1024 Dec 31 09:59 .cache
+        drwx------  3 perfer perfer 1024 Dec 20 11:08 .config
+        -rw-------  1 perfer perfer    4 Jan  7 22:08 my.sh
+        drwx------  2 perfer perfer 1024 Jan  7 22:14 .ssh
+        -rw-------  1 perfer perfer 3072 Jan  7 22:14 .viminfo
+        -rw-------  1 perfer perfer  100 Jan  8 09:16 .Xauthority
